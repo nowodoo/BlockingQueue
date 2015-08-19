@@ -39,8 +39,6 @@ public class BlockingQueue<T> {
         if (queue.size() == capacity) {
             notifyAll();
         }
-        T element = queue.get(0);
-        queue.remove(0);
-        return element;
+        return queue.remove(0);
     }
 }
