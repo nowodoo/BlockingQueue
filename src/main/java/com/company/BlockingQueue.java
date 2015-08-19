@@ -7,7 +7,7 @@ import java.util.LinkedList;
  */
 public class BlockingQueue<T> {
 
-    private LinkedList<T> queue = new LinkedList<T>();
+    private LinkedList<T> queue = new LinkedList<>();
     private int capacity;
 
     public BlockingQueue(int capacity) {
@@ -18,7 +18,6 @@ public class BlockingQueue<T> {
         try {
             while (queue.size() == capacity) {
                 wait();
-                System.out.println();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
