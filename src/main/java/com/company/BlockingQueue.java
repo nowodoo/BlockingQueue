@@ -18,6 +18,7 @@ public class BlockingQueue<T> {
         try {
             while (queue.size() == capacity) {
                 wait();
+                System.out.println();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
