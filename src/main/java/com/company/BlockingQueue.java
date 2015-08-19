@@ -22,8 +22,10 @@ public class BlockingQueue<T> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        if (queue.size() == 0){
+            notifyAll();
+        }
         queue.add(element);
-        notifyAll();
     }
 
     public synchronized T remove(){
@@ -34,9 +36,11 @@ public class BlockingQueue<T> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        if (queue.size() == capacity) {
+            notifyAll();
+        }
         T element = queue.get(0);
         queue.remove(0);
-        notifyAll();
         return element;
     }
 }
